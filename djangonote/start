@@ -1,0 +1,54 @@
+1、django 创建项目
+    django-admin startproject [ProjectName]
+
+2、构建Django 后端
+    2.1 迁移数据并创建相应的表
+        python manage.py makemigtations
+
+    2.2 迁移同步数据库
+        python manage.py migrate
+
+3、创建后台超级用户
+    python manage.py createsuperuser
+        根据系统提示步骤设置账户名及密码
+
+4、设置系统语种及时区
+        LANGUAGE_CODE = 'zh-Hans'
+        TIME_ZONE = 'Asia/Shanghai'
+5、创建App
+    5.1   python manage.py startapp [AppName]
+    5.2   将应用添加至项目下
+          进入setting.py文件中INSTALLED_APPS 函数内添加应用名
+
+6、创建视图
+    应用内Views.py 文件
+    创建响应函数
+
+7、创建映射
+        目的：把视图中的函数映射到前端页面中显示
+        在url.py 文件中加入内容
+8、创建模板
+        1、在应用文件夹内穿件 模板文件夹（templates）
+        2、在模板文件夹内穿件html文件
+
+        ps：一般步骤：创建模板文件（templates)--创建视图(views)--创建映射关系(urls)
+
+
+9、Django 连接Mysql数据库
+    9.1 setting.py文件内DATABASES函数设置数据连接
+            修改为:
+        'default':{
+            'ENGINE':'django.db.backends.mysql',
+            'NAME':'autotest',
+            'USER':'root',
+            'PASSWORD':'admin123',
+            'HOST':'127.0.0.1',
+            'PORT':'3306'
+            }
+     9.2 将应用文件内的__init__.py文件设置mysql连接
+        import pymysql
+        pymysql.install_as_MySQLdb()
+
+    9.3 注释掉 sit-package\Django\db\backends\mysql\base.py  中的 if version <.................... 判断
+
+
