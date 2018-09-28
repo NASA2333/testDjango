@@ -2,14 +2,28 @@
 <html lang="en">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <head>
+        {% load bootstrap4 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
         <meta charset="UTF-8">
         <title>自动化平台</title>
     </head>
-    <body>
-        <ul class="nav navbar-nav navbar-right">
-            <p style="text-align: right"> 欢迎您，<a href="#">{{ user }}</a>&nbsp;&nbsp;
-                <a href="/logout/">退出</a></p>
-            <!--<li> <a href="/logout/">退出</a> </li>-->
-        </ul>
+    <body role="document">
+        <!--<ul class="nav navbar-nav navbar-right">-->
+            <!--<p style="text-align: right"> 欢迎您，<a href="#">{{ user }}</a>&nbsp;&nbsp;-->
+                <!--<a href="/logout/">退出</a></p>-->
+            <!--&lt;!&ndash;<li> <a href="/logout/">退出</a> </li>&ndash;&gt;-->
+        <!--</ul>-->
+        <!--导航-->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">&nbsp;</a>
+                <ul class="nav justify-content-center"></ul>
+                <ul class="nav justify-content-end">
+                    <li class="nav-link"><a style="color: white" href="/home/#">{{ user }}</a></li>
+                    <li class="nav-link"><a style="color: white" href="/logout/">退出</a> </li>
+                </ul>
+            </div>
+        </nav>
     </body>
 </html>

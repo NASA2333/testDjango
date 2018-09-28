@@ -3,10 +3,24 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.contrib.auth import authenticate
+from .models import Apistep,Apitest
 
 # Create your views here.
 def test(request):
     return HttpResponse('hello word')
+
+@login_required
+def apitest_manage(request):
+    apitest_list=Apitest.objects.all()
+    username =request.session.get('user','')
+    return render(request,"apitest_manage.html",{"user":username,"apitests":apitest_list})
+
+@login_required
+def apistep_manage(request):
+    username = request.session.get('user','')
+    apistep_list =Apistep.objects.all()
+    return render(request,"apistep_manage.html",{"user":username,"apisteps":apistep_list})
+
 
 def do_login(request):
     # return render(request,'login.html')
